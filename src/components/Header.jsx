@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import video from '../img/video.mp4'
+import ronaldo from '../img/ronaldo1.jpg'
 
 const Header = () => {
   const [loopNum, setLoopNum] = useState(0)
@@ -12,7 +12,7 @@ const Header = () => {
   useEffect(() => {
     let ticker = setInterval(() => {
         tick()
-    }, delta);
+    }, [delta]);
 
     return () => {clearInterval(ticker)}
   }, [text])
@@ -25,7 +25,7 @@ const Header = () => {
     setText(updatedText)
 
     if(isDeleting) {
-        setDelta(prevDelta => prevDelta / 1.5)
+        setDelta(prevDelta => prevDelta / 2)
     }
 
     if (!isDeleting && updatedText === fullText) {
@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="overlay"></div>
-      <video src={video} autoPlay loop muted className="video" />
+      <img src={ronaldo} className='header__img' />
       <h1 className="title">{text}</h1>
     </div>
   )
